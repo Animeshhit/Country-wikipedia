@@ -72,7 +72,7 @@ const Info = ({ props }) => {
 
   return (
     <>
-      <section className="info mt-8">
+      <section className="info mt-8 mb-6">
         <div className="container">
           <button
             type="button"
