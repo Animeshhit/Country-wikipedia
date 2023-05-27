@@ -6,7 +6,7 @@ const Main = () => {
   const [dropDownValue, setDropDownValue] = useState("REG");
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [apiData, setApiData] = useState([]);
+  const [apiData, setApiData] = useState(null);
 
   // for opening the dropdown 
   const openDropdown = () => {

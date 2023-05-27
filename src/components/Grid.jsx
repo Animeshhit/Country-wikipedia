@@ -7,7 +7,7 @@ const Grid = ({data}) => {
         <div className="container">
             <div className="grid-container">
             {
-            data.length > 0 ? data.map((item,index) => {
+             data ? data.length > 0 ? data.map((item,index) => {
               return <Card
                       key={index}
                        id={item.alpha3Code}
@@ -17,7 +17,7 @@ const Grid = ({data}) => {
                        region={item.region ? item.region : "None"}
                        Capital={item.capital ? item.capital : "Node"}
                        />
-            }) : <h3 className="text-2xl font-bold dark:text-lightelmcolor">Not Found...</h3>
+            }) : <h3 className="text-2xl font-bold dark:text-lightelmcolor heading-font">Not Found...</h3> : <h3 className="text-2xl heading-font font-bold dark:text-lightelmcolor">Loading....</h3>
           }
         </div>
         </div>
