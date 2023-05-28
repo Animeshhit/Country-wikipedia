@@ -6,7 +6,7 @@ const Main = () => {
   const [dropDownValue, setDropDownValue] = useState("REG");
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [apiData, setApiData] = useState([]);
+  const [apiData, setApiData] = useState(null);
 
   // for opening the dropdown
   const openDropdown = () => {
@@ -19,7 +19,7 @@ const Main = () => {
 
   //end
 
-  if (!apiData.length <= 0) {
+  if (!apiData) {
     //sor the array
     apiData.sort((a, b) => {
       if (dropDownValue == "REG") {
