@@ -16,7 +16,6 @@ const Info = ({ props }) => {
     const targetData = data.filter((country) => {
       return country.alpha3Code == params;
     })[0];
-    console.log(targetData);
     setTarget(targetData);
     if (targetData.currencies) {
       setCurrency(targetData.currencies[0].code);
@@ -26,9 +25,9 @@ const Info = ({ props }) => {
     if (targetData.languages) {
       let html = targetData.languages.map((lang, index) => {
         if (index == targetData.languages.length - 1) {
-          return <span>{lang.name}</span>;
+          return <span key={index}>{lang.name}</span>;
         } else {
-          return <span>{`${lang.name}, `}</span>;
+          return <span key={index}>{`${lang.name}, `}</span>;
         }
       });
       setLang(html);
@@ -38,9 +37,9 @@ const Info = ({ props }) => {
     if (targetData.topLevelDomain) {
       let domainHtml = targetData.topLevelDomain.map((domain, index) => {
         if (index == targetData.topLevelDomain.length - 1) {
-          return <span>{domain}</span>;
+          return <span key={index}>{domain}</span>;
         } else {
-          return <span>{`${domain}, `}</span>;
+          return <span key={index}>{`${domain}, `}</span>;
         }
       });
       setTopDomain(domainHtml);

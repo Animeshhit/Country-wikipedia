@@ -6,9 +6,9 @@ const Main = () => {
   const [dropDownValue, setDropDownValue] = useState("REG");
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [apiData, setApiData] = useState(null);
+  const [apiData, setApiData] = useState([]);
 
-  // for opening the dropdown 
+  // for opening the dropdown
   const openDropdown = () => {
     setDropDownOpen(!dropDownOpen);
   };
@@ -19,47 +19,47 @@ const Main = () => {
 
   //end
 
-   //sor the array 
-  data.sort((a, b) => {
-    if (dropDownValue == "REG") {
-      if (a.region < b.region) {
-        return -1;
+  if (!apiData.length <= 0) {
+    //sor the array
+    apiData.sort((a, b) => {
+      if (dropDownValue == "REG") {
+        if (a.region < b.region) {
+          return -1;
+        }
+        if (a.region > b.region) {
+          return 1;
+        }
+      } else if (dropDownValue == "AREA") {
+        if (a.area > b.area) {
+          return -1;
+        }
+        if (a.area < b.area) {
+          return 1;
+        }
+      } else if (dropDownValue == "NAME") {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+      } else {
+        if (a.population > b.population) {
+          return -1;
+        }
+        if (a.population < b.population) {
+          return 1;
+        }
       }
-      if (a.region > b.region) {
-        return 1;
-      }
-    } else if (dropDownValue == "AREA") {
-      if (a.area > b.area) {
-        return -1;
-      }
-      if (a.area < b.area) {
-        return 1;
-      }
-    } else if (dropDownValue == "NAME") {
-      if (a.name < b.name) {
-        return -1;
-      }
-      if (a.name > b.name) {
-        return 1;
-      }
-    } else {
-      if (a.population > b.population) {
-        return -1;
-      }
-      if (a.population < b.population) {
-        return 1;
-      }
-    }
-    return 0;
-  });
+      return 0;
+    });
 
-  //end
+    //end
+  }
 
   useEffect(() => {
-     setApiData(data);
-  },[data])
-
-
+    setApiData(data);
+  }, []);
 
   const getSearchResults = (e) => {
     setSearchKeyword(e.target.value);
@@ -74,7 +74,6 @@ const Main = () => {
     <>
       <section id="sorting">
         <div className="container">
-
           <div className="sort_container flex items-center justify-between mt-8">
             <div className="flex items-center text-lighttextcolor bg-lightelmcolor dark:bg-darkelmcolor rounded shadow-lg gap-3 px-4 dark:text-lightmodeinput">
               <ion-icon className="text-2xl" name="search-outline"></ion-icon>
@@ -147,14 +146,10 @@ const Main = () => {
                 </ul>
               </div>
             </div>
-
-
           </div>
-
-
         </div>
       </section>
-      <Grid data={apiData} sortBy={dropDownValue} />
+      <Grid data={apiData} />
     </>
   );
 };
