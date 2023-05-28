@@ -19,7 +19,7 @@ const Main = () => {
 
   //end
 
-  if (!apiData) {
+  if (apiData) {
     //sor the array
     apiData.sort((a, b) => {
       if (dropDownValue == "REG") {
