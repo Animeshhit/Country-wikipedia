@@ -13,6 +13,7 @@ const Info = ({ props }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0,0);
     const targetData = data.filter((country) => {
       return country.alpha3Code == params;
     })[0];
